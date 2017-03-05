@@ -158,7 +158,6 @@ app.listen(8081, function() {
 
 process.on('SIGINT', function() {
 	console.log("server exiting");
-	exec("brew services stop mongodb;echo hello");
 	process.exit();
 });
 console.log('Server running at http://127.0.0.1:8081/');
