@@ -11,7 +11,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var game=require('./game.js');
+
+//static stuff
+app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
+app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jQuery
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
 app.use(express.static('public'));
+
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({
 	extended: true
@@ -91,12 +97,16 @@ app.post('/login',
 		successRedirect: '/',
 		failureRedirect: '/login'
 	}));
+
 app.get('/logout', function(req, res) {
 	req.logout();
 	res.redirect('/');
 });
+
 app.get('/signup', function(req, res) {
-	res.send('<form method="post"><input type="text" name="username" /><input type="password" name="password"><button type="submit">submit</button></form>');
+	res.sendFile('signup.html',{
+			root: __dirname
+		})
 });
 app.post('/signup', function(req, res) {
 	var user = req.body.username,

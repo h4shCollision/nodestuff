@@ -19,6 +19,7 @@
     "passport-strategy": "^1.0.0"
   },
   "devDependencies": {
+    "bootstrap": "^3.3.7",
     "mongodb": "^2.2.5"
   }
 }

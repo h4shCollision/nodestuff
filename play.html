@@ -1,31 +1,39 @@
-<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-<script>
-$(document).ready(function(){
-	var update=function(data,status){$("#input").val("");$("#hist").html($("#hist").html() + "<p>"+data+"</p>");};
-	var send=function(){
-		$.post("/play",
-        {
-          command: $("#input").val()
-        },update);
-	}
-	$.post("/play",
-        {
-          command: "status"
-        },
-        update);
-    $("#send").click(send);
-    $("#clear").click(function(){
-        $("#hist").html("");
-    });
-    $("#input").on("keydown",function(e){
-    	if(e.keyCode==13){
-    		send();
-    	}
-    })
-});
-</script>
-<div id="hist"></div>
-<input type="text" id="input"></input>
-<button id="send">send</button>
-<button id="clear">clear</button>
-
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <script>
+        $(document).ready(function(){
+            var update=function(data,status){$("#input").val("");$("#hist").html($("#hist").html() + "<p>"+data+"</p>");};
+            var send=function(){
+                $.post("/play",
+                {
+                  command: $("#input").val()
+                },update);
+            }
+            $.post("/play",
+                {
+                  command: "status"
+                },
+                update);
+            $("#send").click(send);
+            $("#clear").click(function(){
+                $("#hist").html("");
+            });
+            $("#input").on("keydown",function(e){
+                if(e.keyCode==13){
+                    send();
+                }
+            })
+        });
+    </script>
+    <div id="hist"></div>
+    <input type="text" id="input"></input>
+    <button id="send">send</button>
+    <button id="clear">clear</button>
+  </body>
+</html>
