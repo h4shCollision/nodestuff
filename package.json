@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "mongod;node main.js"
+    "start": "mongod;nodemon main.js"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "bootstrap": "^3.3.7",
-    "mongodb": "^2.2.5"
+    "mongodb": "^2.2.5",
+    "nodemon": "^1.11.0"
   }
 }
